@@ -1,4 +1,16 @@
 packages:
+  linux:
+    apt:
+    - curl
+    - wget
+    - zsh
+    - direnv
+    - exa
+    - jq
+    - bat
+    - sudo 
+    - ripgrep
+
   darwin:
     brews:
     - 'git'

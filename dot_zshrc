@@ -28,7 +28,7 @@ source ~/.config/catppuccin_latte-zsh-syntax-highlighting.zsh
 
 plugins=(git ruby sudo web-search alias-finder wd bundler dircycle gem git-extras git-flow jsontools fzf python bgnotify battery docker docker-compose rust zsh-vi-mode kubectl history emoji emoji-clock zsh-autosuggestions macos iterm2)
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 zstyle :omz:plugins:iterm2 shell-integration yes
 
@@ -229,3 +229,5 @@ eval "$(direnv hook zsh)"
 # else
 #   export EDITOR='mvim'
 # fi
+#
+eval "$(starship init zsh)"

@@ -1,18 +1,31 @@
 {{ if eq .chezmoi.os "linux" -}}
+{{   if eq .chezmoi.osRelease.id "debian" -}}
 #!/bin/sh
-sudo apt install ripgrep
 
+if [ $EUID -ne 0 ]; then
+    if command -v sudo >/dev/null; then
+      echo "running apt-get update, with sudo"
+      sudo apt-get update > /dev/null
+      echo "running apt-get install git curl, with sudo"
+      sudo apt-get install -y {{range .packages.linux.apt -}}{{ . }} {{ end }}
+    else
+      echo "sudo not available"
+    fi
+else
+  echo "running apt-get update"
+  apt-get update > /dev/null
+  echo "running apt-get install git curl"
+  apt-get install -y {{range .packages.linux.apt -}}{{ . }} {{ end }}
+fi
+{{   end -}}
 {{ else if eq .chezmoi.os "darwin" -}}
-
 #!/bin/bash
-
 brew bundle --no-lock --file=/dev/stdin <<EOF
-{{ range .packages.darwin.brews -}}
+{{      range .packages.darwin.brews -}}
 brew {{ . | quote }}
-{{ end -}}
-{{ range .packages.darwin.casks -}}
+{{      end -}}
+{{      range .packages.darwin.casks -}}
 cask {{ . | quote }}
-{{ end -}}
+{{      end -}}
 EOF
-
 {{ end -}}
