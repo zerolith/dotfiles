@@ -1,0 +1,11 @@
+/Users/d.ackermann/dotfiles/zellij/plugins/statusbar/target/wasm32-wasi/debug/deps/include_dir-adfc2088d9f20a28.rmeta: /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/lib.rs /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/dir.rs /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/dir_entry.rs /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/file.rs /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/../README.md
+
+/Users/d.ackermann/dotfiles/zellij/plugins/statusbar/target/wasm32-wasi/debug/deps/libinclude_dir-adfc2088d9f20a28.rlib: /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/lib.rs /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/dir.rs /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/dir_entry.rs /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/file.rs /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/../README.md
+
+/Users/d.ackermann/dotfiles/zellij/plugins/statusbar/target/wasm32-wasi/debug/deps/include_dir-adfc2088d9f20a28.d: /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/lib.rs /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/dir.rs /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/dir_entry.rs /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/file.rs /Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/../README.md
+
+/Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/lib.rs:
+/Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/dir.rs:
+/Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/dir_entry.rs:
+/Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/file.rs:
+/Users/d.ackermann/.cargo/registry/src/github.com-1ecc6299db9ec823/include_dir-0.7.3/src/../README.md:

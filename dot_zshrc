@@ -1,0 +1,231 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# export LANG=en_US.UTF-8
+
+export ZSH="$HOME/.oh-my-zsh"
+export FZF_BASE="/opt/homebrew/opt/fzf/install"
+export EDITOR=nvim
+export GIT_EDITOR=nvim
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+export EDITOR="nvim"
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/.bin-sonnen"
+export PATH="$PATH:$HOME/.rvm/bin"
+export VAULT_ADDR="http://192.168.178.4:8200"
+export HISTFILE=~/.zhistory
+
+#export FZF_DEFAULT_OPTS="--bind ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down --preview 'bat --color=always{}'"
+
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+source ~/.config/catppuccin_latte-zsh-syntax-highlighting.zsh
+
+plugins=(git ruby sudo web-search alias-finder wd bundler dircycle gem git-extras git-flow jsontools fzf python bgnotify battery docker docker-compose rust zsh-vi-mode kubectl history emoji emoji-clock zsh-autosuggestions macos iterm2)
+
+source $ZSH/oh-my-zsh.sh
+
+zstyle :omz:plugins:iterm2 shell-integration yes
+
+COMPLETION_WAITING_DOTS="true"
+
+setopt autopushd
+autoload -U add-zsh-hook
+autoload -U cdr
+autoload -U chpwd_recent_dirs
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':completion:*:*:cdr:*:*' menu selection
+zstyle ':chpwd:*' recent-dirs-prune parent
+
+bindkey -s "\C-r" "\eqhh\n"
+
+extract () {
+  if [ -f $1 ] ; then
+      case $1 in
+          *.tar.bz2)   tar xvjf $1    ;;
+          *.tar.gz)    tar xvzf $1    ;;
+          *.bz2)       bunzip2 $1     ;;
+          *.rar)       rar x $1       ;;
+          *.gz)        gunzip $1      ;;
+          *.tar)       tar xvf $1     ;;
+          *.tbz2)      tar xvjf $1    ;;
+          *.tgz)       tar xvzf $1    ;;
+          *.zip)       unzip $1       ;;
+          *.Z)         uncompress $1  ;;
+          *.7z)        7z x $1        ;;
+          *)           echo "don't know how to extract '$1'..." ;;
+      esac
+  else
+      echo "'$1' is not a valid file!"
+  fi
+}
+
+dict() {
+    grep "$@" /usr/share/dict/words
+}
+
+exip () {
+    echo -n "Current External IP: "
+    curl http://icanhazip.com
+}
+
+ips () {
+    # determine local IP address
+    ifconfig | grep "inet " | awk '{ print $2 }'
+}
+
+zipf () { 
+    zip -r "$1".zip "$1" ; 
+}
+
+ff () { 
+    /usr/bin/find . -name "$@" ; 
+}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+### ALIAS
+#
+alias h='history'
+alias j='jobs -l'
+alias now='date +"%T"'
+alias ports='netstat -tulanp'
+alias header='curl -I'
+alias headerc='curl -I --compress'
+alias ln='ln -i'
+
+alias apt-get="sudo apt-get"
+alias updatey="sudo apt-get --yes"
+alias update='sudo apt-get update && sudo apt-get upgrade'
+
+alias reboot='sudo /sbin/reboot'
+alias poweroff='sudo /sbin/poweroff'
+alias halt='sudo /sbin/halt'
+alias shutdown='sudo /sbin/shutdown'
+
+alias nginxreload='sudo /usr/local/nginx/sbin/nginx -s reload'
+alias nginxtest='sudo /usr/local/nginx/sbin/nginx -t'
+
+# Linux only?
+alias meminfo='free -m -l -t'
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+alias cpuinfo='lscpu'
+alias cpuinfo='less /proc/cpuinfo' ##
+alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
+
+alias wget='wget -c'
+alias df='df -H'
+alias du='du -ch'
+alias s="ssh -o ConnectTimeout=5 -o ConnectionAttempts=1 -o StrictHostKeyChecking=no"
+
+alias svim='sudo nvim'
+alias xtime='watch -t -n1 "date +%T | figlet -f big -c"'
+alias fact='wget randomfunfacts.com -O - 2>/dev/null | grep \<strong\> | sed "s;^.*<i>\(.*\)</i>.*$;\1;"'
+alias quote='wget quotability.com -O - 2>/dev/null | grep \<strong\> | sed "s;^.*<i>\(.*\)</i>.*$;\1;" '
+alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
+alias numFiles='echo $(ls -1 | wc -l)'
+alias pkt_trace='sudo tcpflow -i `active_net_iface` -c'
+alias http_trace='pkt_trace port 80'
+
+
+alias haggenmüller="spree ssh 36525"
+alias 39859="spree ssh 39859"
+alias 169019="spree ssh 169019"
+alias sb10="s root@sb10"
+alias eco8="s root@eco8"
+
+alias l="eza -l --icons=always"
+alias ll="eza -la --icons=always"
+alias ..="cd .."
+#
+alias tf='tail -f'
+alias screen='TERM=screen screen'
+alias cl='clear'
+alias gz='tar -zcvf'
+alias rgf='rg --files | rg'
+
+source "$HOME/.cargo/env"
+
+RPROMPT='$(battery_pct_prompt)'
+
+DISABLE_AUTO_TITLE="true"
+
+function title {
+    echo -ne "\033]0;"$*"\007"
+}
+
+set-window-title() {
+  # /Users/clessg/projects/dotfiles -> ~/p/dotfiles
+  window_title="${PWD}"
+  # echo -ne "$window_title"
+  title $window_title
+}
+
+PR_TITLEBAR=''
+set-window-title
+add-zsh-hook precmd set-window-title
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+
+if [[ -x "$(command -v zellij)" ]];
+then
+    eval "$(zellij setup --generate-completion zsh | grep "^function")"
+fi;
+
+if [[ -x "$(command -v gping)" ]];
+then
+    alias ping='gping'
+else
+    alias ping='ping -c 5'
+fi;
+
+alias fastping='ping -c 100 -s.2'
+
+function fvim() {
+    if [[ $# -eq 0 ]]; then
+        fd -t f | fzf --header "Open File in Vim" --preview "bat --color=always {}" | xargs nvim
+    else
+        fd -t f | fzf --header "Open File in Vim" --preview "bat --color=always {}" -q "$@" | xargs nvim
+    fi
+}
+
+function vim() {
+    if [[ $# -eq 0 ]]; then
+        nvim .
+    else
+        nvim "$@"
+    fi
+}
+# Nix
+ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+ fi
+
+ if [ $commands[chezmoi] ]; then
+  source <(chezmoi completion zsh)
+fi
+
+eval "$(direnv hook zsh)"
+
+
+
+### Saved for later
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi

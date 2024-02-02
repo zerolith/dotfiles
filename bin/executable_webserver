@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# launch a webserver in current folder
+
+[ "$#" -eq 1 ] || die "1 argument required, $# provided"
+echo $1 | grep -E -q '^[0-9]+$' || die "Numeric argument required, $1 provided"
+
+echo "launching server on port: $1"
+python -m SimpleHTTPServer $1

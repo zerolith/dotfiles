@@ -1,0 +1,17 @@
+#!/bin/bash
+# Reverse sshfs. You need ssh servers on both ends, the script logs first
+# onto the remote end and then back into the local one
+# Usage: sshfsr dir [user@]host:mountpoint  [options]
+# [options] are passed on to the remote sshfs
+
+set -e
+
+LOCALPATH=$1
+REMOTE=$(echo $2 | grep -o '^[^:]*')
+REMOTEPATH=$(echo $2 | grep -o '[^:]*$')
+ARGS=${@:3}
+
+LOCALUSER=$(whoami)
+PORT=10000
+
+ssh $REMOTE -R $PORT:localhost:22 "sshfs -o NoHostAuthenticationForLocalhost=yes -p $PORT $ARGS $LOCALUSER@localhost:$LOCALPATH $REMOTEPATH" &

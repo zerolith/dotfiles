@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+  echo "Usage: ssh-forward IPVIA IPDESTINATION"
+  exit 1
+fi
+echo "Forwarding SSH to $2 via $1"
+ssh -t -o 'ForwardAgent yes' root@$1 ssh root@$2

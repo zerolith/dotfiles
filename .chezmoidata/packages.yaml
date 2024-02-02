@@ -1,0 +1,16 @@
+packages:
+  darwin:
+    brews:
+    - 'git'
+    - 'ripgrep'
+    - 'bore-cli'
+    - 'bat'
+    - 'direnv'
+    - 'eza'
+    - 'mosh'
+    - 'jq'
+    - 'gping'
+    - 'ykman'
+    - 'yt-dlp'
+    - 'zellij'
+    casks:

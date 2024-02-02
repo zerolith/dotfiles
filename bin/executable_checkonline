@@ -1,0 +1,16 @@
+#!/bin/bash
+
+die () {
+    echo >&2 "$@"
+    exit 1
+}
+
+[ "$#" -eq 1 ] || die "1 argument required, $# provided"
+
+while :; do
+    if ping -c 1 $1 > /dev/null; then
+        notify "Ping Check" "$1 back online"
+        break
+    fi
+    sleep 10
+done

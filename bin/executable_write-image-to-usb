@@ -1,0 +1,22 @@
+#!/bin/bash
+
+display_usage() {
+  echo "Use to write an Image (param 1) to an USB Device (param 2)"
+  echo -e "\nUsage: $(basename $0) image.img /dev/rdiskX \n"
+}
+
+if [  $# -le 1 ]
+then
+  display_usage
+  exit 1
+fi
+
+if [[ ( $# == "--help") ||  $# == "-h" ]]
+then
+  display_usage
+  exit 0
+fi
+
+echo "Writing $1 to $2"
+
+pv -tpreb $1 | sudo dd of=$2 bs=8m
