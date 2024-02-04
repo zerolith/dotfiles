@@ -1,5 +1,0 @@
-XSym
-0018
-b5fac53e7fa06439bda93252437a72e0
-macovsky.zsh-theme
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
