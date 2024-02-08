@@ -1,0 +1,169 @@
+format = """
+$os\
+$hostname\
+$username\
+$directory\
+$git_branch\
+$time\
+$character"""
+
+add_newline = false
+
+{{- if eq .chezmoi.hostname "SB-1541" }}
+palette = 'daniel'
+{{- else }}
+palette = 'server'
+{{- end }}
+
+[palettes.server]
+color_fg1 = '#d79921'
+color_fg2 = '#fbf1c7'
+color_fg3 = '#fbf1c7'
+color_fg4 = '#ffffff'
+
+color_bg1 = '#d65d0e'
+color_bg2 = '#d79921'
+color_bg3 = '#d79921'
+color_bg4 = '#689d6a'
+
+color_green = '#98971a'
+color_red = '#cc241d'
+
+[palettes.daniel]
+color_fg1 = '#769ff0'
+color_fg2 = '#e3e5e5'
+color_fg3 = '#e3e5e5'
+color_fg4 = '#ffffff'
+
+color_bg1 = '#33658A'
+color_bg2 = '#86BBD8'
+color_bg3 = '#06969A'
+color_bg4 = '#06969A'
+
+
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:green)'
+error_symbol = '[❯](bold fg:color_red)'
+vimcmd_symbol = '[❯](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
+vimcmd_replace_symbol = '[](bold fg:color_purple)'
+vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+
+[directory]
+style = "fg:color_fg2 bg:color_bg2"
+format = "[ $path ]($style)[](fg:color_bg2 bg:color_bg4)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"~/Code" = "\uf40d "
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"~" = "\ueb06"
+
+[git_branch]
+symbol = ""
+style = "fg:color_fg3 bg:color_bg4"
+format = '[$symbol $branch]($style)[](fg:color_bg4 bg:none)'
+
+[git_status]
+conflicted = '🏳'
+ahead = '🏎💨'
+behind = '😰'
+diverged = '😵'
+up_to_date = '🟢'
+untracked = '🤷'
+stashed = '📦'
+modified = '📝'
+staged = '[++\($count\)](green)'
+renamed = '👅'
+deleted = '🗑'
+style = "bg:color_bg2"
+format = '[[($all_status$ahead_behind )](fg:color_bg1 bg:color_bg2)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol ($version) ](fg:color_bg1 bg:color_bg3)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol ($version) ](fg:color_bg1 bg:color_bg3)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol ($version) ](fg:color_bg1 bg:color_bg3)]($style)'
+
+[php]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol ($version) ](fg:color_bg1 bg:color_bg3)]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:color_bg4"
+format = '[[  $time ](fg:color_fg3)]($style)'
+
+# [direnv]
+# disabled = false
+# style = "bg:color_bg3"
+# symbol = '🟢 '
+# allowed_msg = "Allow"
+
+[docker_context]
+format = '🐋 '
+disabled = true
+style = "bg:color_bg3"
+
+[status]
+style = 'bg:blue'
+symbol = '🔴 '
+success_symbol = '🟢 SUCCESS'
+format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
+map_symbol = true
+disabled = false
+
+[username]
+style_user = "bg:color_bg2 fg:color_fg2"
+style_root = "bg:color_bg2 fg:color_fg2"
+# style = "fg:color_fg2 bg:color_bg1"
+format = "[ $user]($style)"
+disabled = false
+show_always = false
+
+[hostname]
+ssh_only = false
+style = "bg:color_bg1 fg:color_fg2"
+format = '[$hostname]($style)[](fg:color_bg1 bg:color_bg2)'
+# [ $ssh_symbol]($style)
+trim_at = '.local'
+disabled = false
+
+[os]
+format = "[ $symbol]($style)"
+style = "bg:color_bg1 fg:color_fg4"
+disabled = false
+
+[os.symbols]
+Amazon = "🙂 "
+Android = "🤖 "
+Arch = "🎗️ "
+CentOS = "💠 "
+Debian = "\uf306 "
+Linux = "🐧 "
+Macos = "\uf302 "
+NixOS = "❄️ "
+OpenCloudOS = "☁️ "
+Pop = "🍭 "
+Raspbian = "🍓 "
+Ubuntu = "\uf31b "
+Unknown = "❓ "
+Windows = " "
+

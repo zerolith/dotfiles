@@ -3,13 +3,17 @@ packages:
     apt:
     - curl
     - wget
+    - git
+    - mosh
     - zsh
     - direnv
     - exa
     - jq
+    - xz-utils
     - bat
     - sudo 
     - ripgrep
+    - lsb-release
 
   darwin:
     brews:

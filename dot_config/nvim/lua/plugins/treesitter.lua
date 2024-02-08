@@ -10,7 +10,7 @@ return {
         indent = { enable = true },
         ensure_installed = { 
           'go', 'lua', 'python', 'rust', 'typescript', 'regex', 'ruby', 'html',
-          'bash', 'markdown', 'markdown_inline', 'kdl', 'sql', 'org'
+          'bash', 'markdown', 'markdown_inline', 'kdl', 'sql', 'org',
         },
         incremental_selection = {
           enable = true,

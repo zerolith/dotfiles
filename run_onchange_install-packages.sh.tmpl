@@ -1,21 +1,47 @@
 {{ if eq .chezmoi.os "linux" -}}
 {{   if eq .chezmoi.osRelease.id "debian" -}}
-#!/bin/sh
+#!/bin/bash
 
-if [ $EUID -ne 0 ]; then
-    if command -v sudo >/dev/null; then
-      echo "running apt-get update, with sudo"
-      sudo apt-get update > /dev/null
-      echo "running apt-get install git curl, with sudo"
-      sudo apt-get install -y {{range .packages.linux.apt -}}{{ . }} {{ end }}
-    else
-      echo "sudo not available"
+if [[ ":$PATH:" == *":$HOME/.nix-profile/bin:"* ]]; then
+  echo "Path includes nix-profile"
+else
+  export PATH="$HOME/.nix-profile/bin:$PATH"
+fi
+
+if [[ $EUID -ne 0 ]]; then
+  if command -v sudo >/dev/null; then
+    echo "running apt-get update, with sudo"
+    sudo apt-get update > /dev/null
+    echo "running apt-get install {{range .packages.linux.apt -}}{{ . }} {{ end }}, with sudo"
+    sudo apt-get install -y {{range .packages.linux.apt -}}{{ . }} {{ end }} > /dev/null
+    if ! command -v starship >/dev/null; then
+      sudo curl -fsSL https://starship.rs/install.sh | sh -s -- -y 2>&1 > /dev/null
     fi
+    if ! command -v nix >/dev/null; then
+      sudo curl -fsSL https://nixos.org/nix/install | sh -s -- --yes 2>&1 > /dev/null
+    fi
+    if ! command -v nvim >/dev/null; then
+      echo "Install neovim with Nix"
+      nix-env -i neovim > /dev/null
+    fi
+  else
+    echo "sudo not available"
+  fi
 else
   echo "running apt-get update"
   apt-get update > /dev/null
-  echo "running apt-get install git curl"
-  apt-get install -y {{range .packages.linux.apt -}}{{ . }} {{ end }}
+  echo "running apt-get install {{range .packages.linux.apt -}}{{ . }} {{ end }}"
+  apt-get install -y {{range .packages.linux.apt -}}{{ . }} {{ end }} > /dev/null
+  if ! command -v starship >/dev/null; then
+    curl -fsSL https://starship.rs/install.sh | sh -s -- -y 2>&1 > /dev/null
+  fi
+  if ! command -v nix >/dev/null; then
+    curl -fsSL https://nixos.org/nix/install | sh -s -- --daemon --yes 2>&1 > /dev/null
+  fi
+  if ! command -v nvim >/dev/null; then
+    echo "Install neovim with Nix"
+    nix-env -i neovim > /dev/null
+  fi
 fi
 {{   end -}}
 {{ else if eq .chezmoi.os "darwin" -}}
@@ -28,4 +54,7 @@ brew {{ . | quote }}
 cask {{ . | quote }}
 {{      end -}}
 EOF
+if ! command -v starship >/dev/null; then
+  curl -fsSL https://starship.rs/install.sh | sh -s -- -y
+fi
 {{ end -}}
