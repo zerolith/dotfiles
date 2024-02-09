@@ -2,7 +2,10 @@ export ZSH=$HOME/.zsh/
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
 fpath=( ~/.zsh/completion "${fpath[@]}" )
+fpath=( ~/.zsh/functions $fpath)
 autoload -Uz compinit && compinit -u
+
+autoload -U $ZSH/functions/*(N:t)
 
 # export LANG=en_US.UTF-8
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -18,10 +21,13 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export VAULT_ADDR="http://192.168.178.4:8200"
 
 [ -f ~/.cargo/env ] && source "$HOME/.cargo/env"
+
 if [ -f /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
+
+[ -d "$ZSH/zsh-autosuggestions/" ] && source "$ZSH/zsh-autosuggestions/zsh-autosuggestions.zsh"
+[ -d "$ZSH/zsh-vi-mode" ] && source "$ZSH/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
 [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
 
@@ -392,9 +398,15 @@ if [[ "$LSB_DISTRIBUTOR" == "Ubuntu" || "$LSB_DISTRIBUTOR" == "Debian" ]]; then
 fi
 
 
+if [[ $OSTYPE =~ darwin ]]; then
+    alias ps='ps ux'
+    alias plaincopy='pbpaste -Prefer txt | pbcopy; pbpaste; echo'
 
-
-
+    alias locate='mdfind -name'
+    alias ddisk=daisydisk
+    alias marked="open -b com.brettterpstra.marked2"
+fi
+alias duf='duf -hide-fs autofs,devfs,devtmpfs,tmpfs,mtmfs,none,squashfs,rootfs,overlay,fuse.snapfuse -hide-mp /snap'
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

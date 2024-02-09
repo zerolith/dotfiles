@@ -1,32 +1,39 @@
 packages:
   linux:
     apt:
-    - curl
-    - wget
-    - git
-    - mosh
-    - zsh
-    - direnv
-    - exa
-    - jq
-    - xz-utils
     - bat
-    - sudo 
-    - ripgrep
+    - curl
+    - direnv
+    - duf
+    - exa
+    - git
+    - jq
     - lsb-release
+    - mosh
+    - rclone
+    - restic
+    - ripgrep
+    - sudo 
+    - wget
+    - xz-utils
+    - zsh
 
   darwin:
     brews:
-    - 'git'
-    - 'ripgrep'
-    - 'bore-cli'
     - 'bat'
+    - 'bore-cli'
     - 'direnv'
+    - 'duf'
+    - 'dust'
     - 'eza'
-    - 'mosh'
-    - 'jq'
+    - 'git'
     - 'gping'
+    - 'jq'
+    - 'mosh'
+    - 'ripgrep'
     - 'ykman'
     - 'yt-dlp'
     - 'zellij'
+    - rclone
+    - restic
     casks:

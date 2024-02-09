@@ -3,9 +3,9 @@ $os\
 $hostname\
 $username\
 $directory\
-$git_branch\
-$time\
-$character"""
+"""
+
+right_format = """$git_branch$time"""
 
 add_newline = false
 
@@ -53,14 +53,14 @@ vimcmd_visual_symbol = '[](bold fg:color_yellow)'
 
 [directory]
 style = "fg:color_fg2 bg:color_bg2"
-format = "[ $path ]($style)[](fg:color_bg2 bg:color_bg4)"
+format = "[ $path ]($style)[](fg:color_bg2)"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
 "~/Code" = "\uf40d "
 "Documents" = "󰈙 "
-"Downloads" = " "
+"~/Downloads" = " "
 "Music" = " "
 "Pictures" = " "
 "~" = "\ueb06"
@@ -68,7 +68,7 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 style = "fg:color_fg3 bg:color_bg4"
-format = '[$symbol $branch]($style)[](fg:color_bg4 bg:none)'
+format = '[ $symbol $branch]($style)[](fg:color_bg4 bg:none)'
 
 [git_status]
 conflicted = '🏳'
