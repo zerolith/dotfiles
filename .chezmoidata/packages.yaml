@@ -7,6 +7,7 @@ packages:
     - duf
     - exa
     - git
+    - httpie
     - jq
     - lsb-release
     - mosh
@@ -28,12 +29,13 @@ packages:
     - 'eza'
     - 'git'
     - 'gping'
+    - 'httpie'
     - 'jq'
     - 'mosh'
     - 'ripgrep'
     - 'ykman'
     - 'yt-dlp'
     - 'zellij'
-    - rclone
-    - restic
+    - 'rclone'
+    - 'restic'
     casks:

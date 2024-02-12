@@ -1,4 +1,52 @@
+.Trash
+.bundle
+.cache
+.cargo
+.chpwd-recent-dirs
+.config/Unreal Engine
+.config/chezmoi
+.config/flipperdevices.com
+.config/github-copilot
+.config/hm-prowee
+.config/iterm2
+.config/nvim/lazy-lock.json
+.config/pudb
+.config/ranger
+.config/raycast
+.docker
+.dvdcss
+.gem
 .gitignore
-setup.sh
+.local
+.nix-defexpr
+.nix-profile
+.npm
+.rustup
+.rvm
+.vault-token
+.vnc
+.vscode
+.zcompdump
+.zhistory
+.zsh/fzf-tab/modules/stamp-h.in
+Applications
+Applications (Parallels)
+Code
+Desktop
+Documents
+Downloads
+Library
+Movies
+Music
+OneDrive - sonnen
+Parallels
+Pictures
+Public
 README.md
+dotfiles/.DS_Store
+dotfiles/Icon
 key.txt
+sonnen
+sonnen
+sonnen - Team Software - Dokumente
+setup.sh

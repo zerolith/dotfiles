@@ -7,26 +7,30 @@ autoload -Uz compinit && compinit -u
 
 autoload -U $ZSH/functions/*(N:t)
 
-# export LANG=en_US.UTF-8
+export LANG=de_DE.UTF-8
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 export EDITOR=nvim
 export GIT_EDITOR=nvim
 export EDITOR="nvim"
-export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/.bin-sonnen"
 export PATH="$PATH:$HOME/.rvm/bin"
 
-###
-export VAULT_ADDR="http://192.168.178.4:8200"
-
 [ -f ~/.cargo/env ] && source "$HOME/.cargo/env"
+
+[ -f ~/.restic/.restic.zsh ] && source "$HOME/.restic/restic.zsh"
+
+[ -f ~/.vault-token ] && source "$ZSH/vault.zsh"
+
+[ -f ~/$ZSH/fzf.zsh ] && source ~/$ZSH/fzf.zsh
 
 if [ -f /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 [ -d "$ZSH/zsh-autosuggestions/" ] && source "$ZSH/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
 [ -d "$ZSH/zsh-vi-mode" ] && source "$ZSH/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
 [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
@@ -409,6 +413,5 @@ fi
 alias duf='duf -hide-fs autofs,devfs,devtmpfs,tmpfs,mtmfs,none,squashfs,rootfs,overlay,fuse.snapfuse -hide-mp /snap'
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(starship init zsh)"

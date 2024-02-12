@@ -1,0 +1,9 @@
+docker run \
+  --rm \
+  -ti \
+  -v $PWD/log/:/var/log/letsencrypt/ \
+  -v $PWD/etc/:/etc/letsencrypt/ \
+  -p 80:80 \
+  certbot/certbot certonly \
+  --standalone \
+  -d mail.zerolith.com
