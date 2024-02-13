@@ -7,3 +7,17 @@ encryption = "age"
 [git]
     autoCommit = true
     autoPush = true
+
+{{- $osID := .chezmoi.os -}}
+{{- if (eq .chezmoi.os "linux") -}}
+{{- if (hasKey .chezmoi.osRelease "idLike") -}}
+{{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.idLike -}}
+{{- else if (hasKey .chezmoi.osRelease "id") -}}
+{{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- else if (output "uname" "-a" | contains "synology") -}}
+{{-   $osID = "linux-synology" -}}
+{{- end -}}
+{{- end -}}
+
+[data]
+    osid: {{ $osID }}
