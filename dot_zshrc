@@ -1,4 +1,4 @@
-export ZSH=$HOME/.zsh/
+export ZSH=$HOME/.zsh
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
 fpath=( ~/.zsh/completion "${fpath[@]}" )
@@ -374,7 +374,7 @@ if [[ "$TERM" == "screen" ]]; then
 fi
 
 # activate ls colors, (private if possible)
-export ZSH_DIRCOLORS="$ZSH_CONFIG/dircolors-solarized/dircolors.256dark"
+export ZSH_DIRCOLORS="$ZSH/dircolors-solarized/dircolors.256dark"
 if [[ -a $ZSH_DIRCOLORS ]]; then
     if [[ "$TERM" == *256* ]]; then
         which dircolors > /dev/null && eval "`dircolors -b $ZSH_DIRCOLORS 2>/dev/null`"
