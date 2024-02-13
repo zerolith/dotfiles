@@ -1,13 +1,3 @@
-encryption = "age"
-[age]
-    # command = "rage"
-    # recipient = "age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac8p"
-    identity = "~/.config/chezmoi/key.txt"
-    recipient = "age1c638gt3jptuzevk6v9dkdxgw45kjuc9h6cfahzu6jdpeyf42xcls58qula"
-[git]
-    autoCommit = true
-    autoPush = true
-
 {{- $osID := .chezmoi.os -}}
 {{- if (eq .chezmoi.os "linux") -}}
 {{- if (hasKey .chezmoi.osRelease "idLike") -}}
@@ -18,6 +8,16 @@ encryption = "age"
 {{-   $osID = "linux-synology" -}}
 {{- end -}}
 {{- end -}}
+
+encryption = "age"
+[age]
+    # command = "rage"
+    # recipient = "age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac8p"
+    identity = "~/.config/chezmoi/key.txt"
+    recipient = "age1c638gt3jptuzevk6v9dkdxgw45kjuc9h6cfahzu6jdpeyf42xcls58qula"
+[git]
+    autoCommit = true
+    autoPush = true
 
 [data]
     osid: {{ $osID }}
