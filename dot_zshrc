@@ -17,9 +17,6 @@ export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/.bin-sonnen"
 export PATH="$PATH:$HOME/.rvm/bin"
 
-export GOROOT="$(brew --prefix golang)/libexec"
-echo $GOROOT
-
 [ -f ~/.cargo/env ] && source "$HOME/.cargo/env"
 
 [ -f ~/.restic/.restic.zsh ] && source "$HOME/.restic/restic.zsh"
@@ -31,6 +28,10 @@ echo $GOROOT
 if [ -f /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+
+export GOROOT="$(brew --prefix golang)/libexec"
+
 
 [ -d "$ZSH/zsh-autosuggestions/" ] && source "$ZSH/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
