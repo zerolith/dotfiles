@@ -10,4 +10,7 @@ else
         /bin/sh /tmp/starship --force >> /dev/null
     fi
 fi
-echo "Run chsh -s $(which zsh)"
+
+if command -v chsh >/dev/null; then
+  echo "Run chsh -s $(which zsh)"
+fi

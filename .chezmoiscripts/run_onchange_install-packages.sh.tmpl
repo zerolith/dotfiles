@@ -16,9 +16,6 @@ if [[ $EUID -ne 0 ]]; then
     sudo apt-get update > /dev/null
     echo "running apt-get install {{range .packages.linux.apt -}}{{ . }} {{ end }}, with sudo"
     sudo apt-get install -y {{range .packages.linux.apt -}}{{ . }} {{ end }} > /dev/null
-    if ! command -v starship >/dev/null; then
-      sudo curl -fsSL https://starship.rs/install.sh | sh -s -- -y 2>&1 > /dev/null
-    fi
     if ! command -v nix >/dev/null; then
       sudo curl -fsSL https://nixos.org/nix/install | sh -s -- --yes 2>&1 > /dev/null
     fi
@@ -34,9 +31,6 @@ else
   apt-get update > /dev/null
   echo "running apt-get install {{range .packages.linux.apt -}}{{ . }} {{ end }}"
   apt-get install -y {{range .packages.linux.apt -}}{{ . }} {{ end }} > /dev/null
-  if ! command -v starship >/dev/null; then
-    curl -fsSL https://starship.rs/install.sh | sh -s -- -y 2>&1 > /dev/null
-  fi
   if ! command -v nix >/dev/null; then
     curl -fsSL https://nixos.org/nix/install | sh -s -- --daemon --yes 2>&1 > /dev/null
   fi
@@ -56,7 +50,4 @@ brew {{ . | quote }}
 cask {{ . | quote }}
 {{      end -}}
 EOF
-if ! command -v starship >/dev/null; then
-  curl -fsSL https://starship.rs/install.sh | sh -s -- -y
-fi
 {{ end -}}
