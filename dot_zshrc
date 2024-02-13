@@ -17,6 +17,8 @@ export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/.bin-sonnen"
 export PATH="$PATH:$HOME/.rvm/bin"
 
+export GOROOT=`$(brew --prefix go)/libexec/src`
+
 [ -f ~/.cargo/env ] && source "$HOME/.cargo/env"
 
 [ -f ~/.restic/.restic.zsh ] && source "$HOME/.restic/restic.zsh"
