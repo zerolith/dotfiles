@@ -1,4 +1,6 @@
-{{ if eq .chezmoi.os "linux" -}}
+{{- if (eq .osid "linux-synology") -}}
+
+{{ else if eq .chezmoi.os "linux" -}}
 {{   if (eq .chezmoi.osRelease.id "debian" "ubuntu") -}}
 #!/bin/bash
 
