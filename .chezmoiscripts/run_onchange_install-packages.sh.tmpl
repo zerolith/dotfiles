@@ -21,7 +21,7 @@ if [[ $EUID -ne 0 ]]; then
     fi
     if ! command -v nvim >/dev/null; then
       echo "Install neovim with Nix"
-      nix-env -i neovim > /dev/null
+      nix-env -f '<nixpkgs>' -iA neovim > /dev/null
     fi
   else
     echo "sudo not available"
@@ -36,7 +36,7 @@ else
   fi
   if ! command -v nvim >/dev/null; then
     echo "Install neovim with Nix"
-    nix-env -i neovim > /dev/null
+    nix-env -f '<nixpkgs>' -iA neovim > /dev/null
   fi
 fi
 {{   end -}}
