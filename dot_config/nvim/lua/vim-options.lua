@@ -37,6 +37,8 @@ vim.o.conceallevel=2
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.api.nvim_set_option_value("colorcolumn", "79", {})
+
 
 local signs = {
     Error = " ",
