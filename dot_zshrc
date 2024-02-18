@@ -417,5 +417,6 @@ fi
 alias duf='duf -hide-fs autofs,devfs,devtmpfs,tmpfs,mtmfs,none,squashfs,rootfs,overlay,fuse.snapfuse -hide-mp /snap'
 
 
+eval "$(zoxide init zsh)"
 
 eval "$(starship init zsh)"

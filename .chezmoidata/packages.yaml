@@ -1,6 +1,7 @@
 packages:
   linux:
     apt:
+    - 'zoxide'
     - bat
     - curl
     - direnv
@@ -32,10 +33,11 @@ packages:
     - 'httpie'
     - 'jq'
     - 'mosh'
+    - 'rclone'
+    - 'restic'
     - 'ripgrep'
     - 'ykman'
     - 'yt-dlp'
     - 'zellij'
-    - 'rclone'
-    - 'restic'
+    - 'zoxide'
     casks:
