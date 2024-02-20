@@ -2,6 +2,8 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
+vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+
 
 -- Navigate vim panes better
 vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
@@ -38,10 +40,6 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.api.nvim_set_option_value("colorcolumn", "79", {})
-
- vim.cmd [[
-        hi Normal guibg=NONE ctermbg=NONE
-    ]]
 
 local signs = {
     Error = " ",
