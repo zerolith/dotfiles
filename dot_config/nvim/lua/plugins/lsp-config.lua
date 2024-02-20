@@ -11,7 +11,7 @@ return {
     lazy = false,
     opts = {
       auto_install = true,
-      ensure_installed = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', "ruby_ls", "rubocop", "yamlls", "rnix", "html" },
+      -- ensure_installed = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', "ruby_ls", "rubocop", "yamlls", "rnix", "html" },
     },
   },
   {
