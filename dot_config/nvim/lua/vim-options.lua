@@ -39,6 +39,9 @@ vim.g.maplocalleader = ' '
 
 vim.api.nvim_set_option_value("colorcolumn", "79", {})
 
+ vim.cmd [[
+        hi Normal guibg=NONE ctermbg=NONE
+    ]]
 
 local signs = {
     Error = " ",
