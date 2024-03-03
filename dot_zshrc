@@ -10,9 +10,14 @@ autoload -U $ZSH/functions/*(N:t)
 export LANG=de_DE.UTF-8
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-export EDITOR=nvim
-export GIT_EDITOR=nvim
-export EDITOR="nvim"
+
+if [ $commands[nvim] ]; then
+    export GIT_EDITOR=nvim
+    export EDITOR="nvim"
+else
+    export GIT_EDITOR=vim
+    export EDITOR="vim"
+fi
 export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/.bin-sonnen"
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -185,7 +190,6 @@ alias df='df -H'
 alias du='du -ch'
 alias s="ssh -o ConnectTimeout=5 -o ConnectionAttempts=1 -o StrictHostKeyChecking=no"
 
-alias svim='sudo nvim'
 alias xtime='watch -t -n1 "date +%T | figlet -f big -c"'
 alias fact='wget randomfunfacts.com -O - 2>/dev/null | grep \<strong\> | sed "s;^.*<i>\(.*\)</i>.*$;\1;"'
 alias quote='wget quotability.com -O - 2>/dev/null | grep \<strong\> | sed "s;^.*<i>\(.*\)</i>.*$;\1;" '
@@ -268,11 +272,35 @@ function fvim() {
     fi
 }
 
-function vim() {
-    if [[ $# -eq 0 ]]; then
-        nvim .
+function svim() {
+    if [ $commands[nvim] ]; then
+        if [[ $# -eq 0 ]]; then
+            sudo nvim .
+        else
+            sudo nvim "$@"
+        fi
     else
-        nvim "$@"
+        if [[ $# -eq 0 ]]; then
+            sudo vim .
+        else
+            sudo vim "$@"
+        fi
+    fi
+}
+
+function vim() {
+    if [ $commands[nvim] ]; then
+        if [[ $# -eq 0 ]]; then
+            nvim .
+        else
+            nvim "$@"
+        fi
+    else
+        if [[ $# -eq 0 ]]; then
+            vim .
+        else
+            vim "$@"
+        fi
     fi
 }
 # Nix
