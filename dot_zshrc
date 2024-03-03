@@ -12,9 +12,11 @@ export LANG=de_DE.UTF-8
 
 
 if [ -x "$(command -v nvim)" ]; then
+	echo "NVIM"
     export GIT_EDITOR=nvim
     export EDITOR="nvim"
 else
+	echo "VIM"
     export GIT_EDITOR=vim
     export EDITOR="vim"
 fi
