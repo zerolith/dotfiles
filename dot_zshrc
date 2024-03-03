@@ -11,15 +11,6 @@ export LANG=de_DE.UTF-8
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 
-if [ -x "$(command -v nvim)" ]; then
-	echo "NVIM"
-    export GIT_EDITOR=nvim
-    export EDITOR="nvim"
-else
-	echo "VIM"
-    export GIT_EDITOR=vim
-    export EDITOR="vim"
-fi
 export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/.bin-sonnen"
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -429,4 +420,13 @@ if [ -x "$(command -v zoxide)" ]; then
     alias c=__zoxide_z
 fi
 
+if [ -x "$(command -v nvim)" ]; then
+	echo "NVIM"
+    export GIT_EDITOR=nvim
+    export EDITOR="nvim"
+else
+	echo "VIM"
+    export GIT_EDITOR=vim
+    export EDITOR="vim"
+fi
 eval "$(starship init zsh)"
