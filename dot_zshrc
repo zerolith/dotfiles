@@ -237,6 +237,13 @@ alias cl='clear'
 alias gz='tar -zcvf'
 alias rgf='rg --files | rg'
 
+if [ $commands[nvim] ]; then
+    alias vim="nvim"
+    alias svim="sudo nvim"
+else
+    alias vim="vim"
+    alias svim="sudo vim"
+fi
 
 function title {
     echo -ne "\033]0;"$*"\007"
@@ -272,37 +279,6 @@ function fvim() {
     fi
 }
 
-function svim() {
-    if [ $commands[nvim] ]; then
-        if [[ $# -eq 0 ]]; then
-            sudo nvim .
-        else
-            sudo nvim "$@"
-        fi
-    else
-        if [[ $# -eq 0 ]]; then
-            sudo vim .
-        else
-            sudo vim "$@"
-        fi
-    fi
-}
-
-function vim() {
-    if [ $commands[nvim] ]; then
-        if [[ $# -eq 0 ]]; then
-            nvim .
-        else
-            nvim "$@"
-        fi
-    else
-        if [[ $# -eq 0 ]]; then
-            vim .
-        else
-            vim "$@"
-        fi
-    fi
-}
 # Nix
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
     . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
