@@ -11,7 +11,7 @@ export LANG=de_DE.UTF-8
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 
-if [ $commands[nvim] ]; then
+if [ -x "$(command -v nvim)" ]; then
     export GIT_EDITOR=nvim
     export EDITOR="nvim"
 else
@@ -237,7 +237,7 @@ alias cl='clear'
 alias gz='tar -zcvf'
 alias rgf='rg --files | rg'
 
-if [ $commands[nvim] ]; then
+if [ -x "$(command -v nvim)" ]; then
     alias vim="nvim"
     alias svim="sudo nvim"
 else
@@ -421,7 +421,7 @@ fi
 alias duf='duf -hide-fs autofs,devfs,devtmpfs,tmpfs,mtmfs,none,squashfs,rootfs,overlay,fuse.snapfuse -hide-mp /snap'
 
 
-if [ $commands[zoxide] ]; then
+if [ -x "$(command -v zoxide)" ]; then
     eval "$(zoxide init zsh)"
     alias cd=__zoxide_z
     alias c=__zoxide_z
