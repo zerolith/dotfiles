@@ -445,7 +445,7 @@ fi
 alias duf='duf -hide-fs autofs,devfs,devtmpfs,tmpfs,mtmfs,none,squashfs,rootfs,overlay,fuse.snapfuse -hide-mp /snap'
 
 
-if [ $commands[chezmoi] ]; then
+if [ $commands[zoxide] ]; then
     eval "$(zoxide init zsh)"
     alias cd=__zoxide_z
     alias c=__zoxide_z
